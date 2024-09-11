@@ -1,4 +1,4 @@
-![Faiz-dev76](faiz_iphone.jpeg)
+![Faiz-dev76](malioboro.jpeg)
 # 💫 About Me:
 Seorang dengan memiliki pengalaman 2+ tahun dalam kemampuan membuat Web Portofolio, Input data melalui DataBase PHP dan MySql. <br>Mampu Membuat perancangan Insfrastruktur Jaringan dengan Cisco Packet Tracer.<br>Mampu Membuat login page dan Setting pada Perangkat Hardware, Mikrotik.<br>Mampu Menggunakan VS Code untuk membuat Pemrograman Web Basic.<br>Mampu menggunakan Tools VM Ware untuk mengkonfigurasi Web Server, DHCP Server dan DNS server pada Debian.Srv
 
