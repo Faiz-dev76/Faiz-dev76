@@ -1,0 +1,61 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Clock</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            font-family: 'Arial', sans-serif;
+        }
+        .clock {
+            display: flex;
+            gap: 0.5rem;
+        }
+        .digit {
+            font-size: 5rem;
+            color: white;
+            text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            background: rgba(255, 255, 255, 0.1);
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+        }
+    </style>
+</head>
+<body class="flex items-center justify-center min-h-screen">
+    <div class="text-center">
+        <div class="clock" id="clock">
+            <div class="digit">00</div>
+            <div class="digit">:</div>
+            <div class="digit">00</div>
+            <div class="digit">:</div>
+            <div class="digit">00</div>
+        </div>
+        <div class="text-rose-50 text-xl mt-2"><i>Waktu Indonesia Barat (WIB)</i></div>
+    </div>
+
+    <script>
+        function updateClock() {
+            const now = new Date();
+            const hours = String(now.getHours()).padStart(2, '0');
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            const seconds = String(now.getSeconds()).padStart(2, '0');
+            const clock = document.getElementById('clock');
+            clock.innerHTML = `
+                <div class="digit">${hours[0]}</div>
+                <div class="digit">${hours[1]}</div>
+                <div class="digit">:</div>
+                <div class="digit">${minutes[0]}</div>
+                <div class="digit">${minutes[1]}</div>
+                <div class="digit">:</div>
+                <div class="digit">${seconds[0]}</div>
+                <div class="digit">${seconds[1]}</div>
+            `;
+        }
+
+        setInterval(updateClock, 1000);
+        updateClock(); // initial call to display clock immediately
+    </script>
+</body>
+</html>
